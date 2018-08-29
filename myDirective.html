@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<script src="/dist/angular.js"></script>
+	</head>
+	<body ng-app="app" ng-controller="ctrl">
+		<input-box title="my input">
+			
+			here is my directive available
+		</input-box>		
+		<script>
+			var app = angular.module('app',[]);
+			app.directive('inputBox',function(){
+				return {
+					restrict :'E',
+					transclude : true,
+					scope:{
+						title :'@'
+					},
+					templateUrl : 'template.html'
+				}; 
+			})
+			app.controller('ctrl',['$scope',function($scope){
+				$scope.hello = 'world';
+
+			}]);
+		</script>	
+	</body>	
+</html>

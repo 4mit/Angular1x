@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<!-- Here Files are serving from public folder and so No Need add prefix public just write file name 
+			 or folder/filename   in case file is inside a folder
+		 -->
+		<script src="/js/angular.js"></script>
+	</head>
+	<body ng-app="app" ng-controller="ctrl">
+
+		<!-- Directive Name follows JS css Style like backgroundColor that is background-color 
+			so inside js file we will create inputBox as Directive name and in html we use input-box
+		-->
+		<input-box title="my input"></input-box>	
+		<script>
+			var app = angular.module('app',[]);
+			app.directive('inputBox',function(){
+				return {
+					restrict :'E',			//	Restricting Directive as an Element
+					transclude : true,
+					scope:{
+						title :'@'			// This will be available in scope
+					},
+					templateUrl : '/template.html'		// Template is serving from public Folder as we created Public as static folder
+				}; 
+			})
+			app.controller('ctrl',['$scope',function($scope){	// No need to pass anything to create a directive
+				$scope.hello = 'world';
+			}]);
+		</script>	
+	</body>	
+</html>
